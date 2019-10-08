@@ -39,7 +39,7 @@ console.log('Random country name was displayed.')
 //  * Finally, display an appropriate message in the resultTextElement to tell the user if they are right or wrong. 
 //      For example "Correct! The capital of Germany is Berlin" or "Wrong - the capital of Germany is not G, it is Berlin"
 //let code = getAlphaCode()
-function getAlphaCode (){
+/*function getAlphaCode (){
 let countryCode = currentSessionCountry["alpha-2"] //get the 2 charachter country code
 console.log(countryCode);
 return countryCode
@@ -50,9 +50,14 @@ function getURL (countryCode) {
 let url = 'https://api.worldbank.org/v2/country/'+getAlphaCode()+'?format=json' //insert 2 char. country code into worldbank API URL
 console.log(baseURL);//prints URL in console
 return url
-}
+}*/
 
 submitButton.addEventListener('click', function(){ //event listener to read the users answer and check it against the worldbak API
+	
+	let countryCode = currentSessionCountry["alpha-2"]
+	console.log(countryCode)
+	let baseURL = 'https://api.worldbank.org/v2/country/'+countryCode+'?format=json'
+	
 	let userAnswer = userAnswerElement.value
 	console.log(userAnswer);
 	fetch(baseURL)
@@ -80,9 +85,9 @@ submitButton.addEventListener('click', function(){ //event listener to read the 
 // already written, you should refactor your code to use functions to avoid writing very similar code twice.
 playAgain.addEventListener('click', function() {
 	userAnswerElement.value = ''
-	currentCountrySession = getCurrentCountry()
+	currentSessionCountry = getCurrentCountry()
 
-	//randomCountryElement.innerHTML = currentCountrySession.name
+	randomCountryElement.innerHTML = currentSessionCountry.name
 	//countryCode = currentwCountrySession["alpha-2"]
 
 
